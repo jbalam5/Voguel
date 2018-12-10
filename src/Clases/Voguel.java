@@ -30,11 +30,6 @@ public class Voguel {
     public int getDemanda(int sortRow[]){
         SortBurbuja(sortRow);
         return sortRow[1] - sortRow[0];
-        /*for(int i = 0; i < sortRow.length; i++ ){
-                Multa[i] = sortRow[1] - sortRow[0];    
-                System.outprintln(Multa[i]);
-            }
-        */
     }
     
     public void columns(int[][] arreglo, int index){

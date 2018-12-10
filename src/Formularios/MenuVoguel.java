@@ -6,6 +6,9 @@
 package Formularios;
 
 import javax.swing.table.DefaultTableModel;
+import java.awt.Dialog;
+import java.util.Vector;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
@@ -30,11 +33,17 @@ public class MenuVoguel extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        txtFilas = new javax.swing.JTextField();
-        txtColumnas = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jTableParameters = new javax.swing.JTable();
         btnShowTable = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableResult = new javax.swing.JTable();
+        jSeparator1 = new javax.swing.JSeparator();
+        jToolBar1 = new javax.swing.JToolBar();
+        jLabel1 = new javax.swing.JLabel();
+        txtFilas = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtColumnas = new javax.swing.JTextField();
+        jButtonCreateTable = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -45,24 +54,10 @@ public class MenuVoguel extends javax.swing.JFrame {
 
         jScrollPane1.setName("tableValues"); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jTable1.setName("tableValues"); // NOI18N
-        jTable1.setUpdateSelectionOnSort(false);
-        jScrollPane1.setViewportView(jTable1);
-
-        jButton1.setText("Aceptar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jTableParameters.setName("tableValues"); // NOI18N
+        jTableParameters.getTableHeader().setReorderingAllowed(false);
+        jTableParameters.setUpdateSelectionOnSort(false);
+        jScrollPane1.setViewportView(jTableParameters);
 
         btnShowTable.setText("ver");
         btnShowTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -70,37 +65,89 @@ public class MenuVoguel extends javax.swing.JFrame {
                 btnShowTableMouseClicked(evt);
             }
         });
+        btnShowTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowTableActionPerformed(evt);
+            }
+        });
+
+        jTableResult.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(jTableResult);
+
+        jToolBar1.setRollover(true);
+        jToolBar1.setPreferredSize(new java.awt.Dimension(100, 30));
+        jToolBar1.setRequestFocusEnabled(false);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Filas:");
+        jLabel1.setMaximumSize(new java.awt.Dimension(70, 14));
+        jLabel1.setMinimumSize(new java.awt.Dimension(70, 14));
+        jLabel1.setPreferredSize(new java.awt.Dimension(70, 14));
+        jToolBar1.add(jLabel1);
+
+        txtFilas.setMaximumSize(new java.awt.Dimension(70, 25));
+        txtFilas.setMinimumSize(new java.awt.Dimension(50, 20));
+        txtFilas.setPreferredSize(new java.awt.Dimension(60, 20));
+        jToolBar1.add(txtFilas);
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Columnas:");
+        jLabel2.setFocusTraversalPolicyProvider(true);
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel2.setMaximumSize(new java.awt.Dimension(70, 14));
+        jLabel2.setMinimumSize(new java.awt.Dimension(70, 14));
+        jLabel2.setPreferredSize(new java.awt.Dimension(70, 14));
+        jToolBar1.add(jLabel2);
+
+        txtColumnas.setMaximumSize(new java.awt.Dimension(70, 25));
+        txtColumnas.setMinimumSize(new java.awt.Dimension(70, 25));
+        txtColumnas.setPreferredSize(new java.awt.Dimension(70, 20));
+        jToolBar1.add(txtColumnas);
+
+        jButtonCreateTable.setText("Aceptar");
+        jButtonCreateTable.setMargin(new java.awt.Insets(2, 20, 2, 14));
+        jButtonCreateTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCreateTableActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButtonCreateTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtFilas)
-                    .addComponent(txtColumnas)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnShowTable, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26))
+                .addGap(247, 247, 247)
+                .addComponent(btnShowTable, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator1)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtFilas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtColumnas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(btnShowTable))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(296, Short.MAX_VALUE))
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnShowTable)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -110,31 +157,63 @@ public class MenuVoguel extends javax.swing.JFrame {
         
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonCreateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreateTableActionPerformed
         DefaultTableModel tableModel = new DefaultTableModel();
+        DefaultTableModel modelResult = new DefaultTableModel();
         
         for(int i = 0; i < Integer.parseInt(txtFilas.getText()); i++ ){
             tableModel.addRow(new Object[]{});
+            //modelResult.addRow(new Object[]{});
         }
         
         for(int i = 0; i < Integer.parseInt(txtColumnas.getText()); i++ ){
             tableModel.addColumn(i);
+            modelResult.addColumn(i);
         }
         
-        jTable1.setModel(tableModel);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        modelResult.addColumn(tableModel.getColumnCount());
+        
+        jTableParameters.setModel(tableModel);
+        jTableResult.setModel(modelResult);
+    }//GEN-LAST:event_jButtonCreateTableActionPerformed
 
     private void btnShowTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnShowTableMouseClicked
         // TODO add your handling code here:
-        for(int i = 0; i < jTable1.getRowCount(); i++ ){
-            for(int x = 0; x < jTable1.getColumnCount(); x++){
-                System.out.print(jTable1.getValueAt(i, x) + ",");
-            }
-            System.out.println();
-        }
-        
+
     }//GEN-LAST:event_btnShowTableMouseClicked
 
+    private void btnShowTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTableActionPerformed
+        try{
+            if( jTableParameters.getRowCount() <= 0 ) showMessageDialog(null, "Debe ingresar registos" );
+            DefaultTableModel modelResult = (DefaultTableModel) jTableResult.getModel();
+       
+            for(int i = 0; i < jTableParameters.getRowCount(); i++ ){
+                Vector row = new Vector(); 
+               
+                for(int x = 0; x < jTableParameters.getColumnCount(); x++){
+                    if(jTableParameters.getValueAt(i, x) != null)
+                       row.add(Integer.parseInt(jTableParameters.getValueAt(i, x).toString()));
+                    else
+                        row.add(0);
+                }
+                
+                row.add(0);
+                modelResult.addRow(row);
+            }
+            
+        }catch(Exception ex){
+            showMessageDialog(null, ex );
+        }
+    }//GEN-LAST:event_btnShowTableActionPerformed
+
+    public int[] getRowAt(int row) {
+        int[] result = new int[jTableParameters.getColumnCount()];
+        for (int i = 0; i < jTableParameters.getColumnCount(); i++) {
+            result[i] = Integer.parseInt(jTableParameters.getValueAt(row, i).toString());
+        }
+
+        return result;
+    }
     /**
      * @param args the command line arguments
      */
@@ -146,7 +225,7 @@ public class MenuVoguel extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -172,9 +251,15 @@ public class MenuVoguel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnShowTable;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonCreateTable;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTableParameters;
+    private javax.swing.JTable jTableResult;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTextField txtColumnas;
     private javax.swing.JTextField txtFilas;
     // End of variables declaration//GEN-END:variables
